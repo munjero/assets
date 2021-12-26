@@ -1,0 +1,12 @@
+<div class="toolbar">
+  <button class="nav-toggle"></button>
+  <nav class="breadcrumbs" aria-label="breadcrumbs">
+    <ul>
+      <li><a href="/">Home</a></li>
+      {% for breadcrumb in page.breadcrumbs %}
+      <li><a href="{{ breadcrumb.url }}">{{ breadcrumb.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </nav>
+  <div class="edit-this-page"><a href="{{ site.github }}/edit/master/{{ page.sourcePath }}">Edit this Page</a></div>
+</div>

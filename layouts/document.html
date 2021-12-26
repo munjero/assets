@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>{{ page.title }}{% if page.title != site.title %} | {{ site.title }}{% endif %}</title>
+
+    <meta property="og:description" content="{{ page.description }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ page.url }}" />
+    <meta property="og:site_name" content="{{ site.title }}" />
+
+    <meta itemprop="name" content="{{ page.title }}">
+    <meta itemprop="description" content="{{ page.description }}">
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="{{ page.title }}" />
+    <meta name="twitter:description" content="{{ page.description }}" />
+
+    <link rel="stylesheet" href="{{ site.baseUrl }}css/site.css" />
+  </head>
+  <body>
+
+    <header>
+      <div class="header-bar"></div>
+      <nav>
+        <div class="nav-brand">
+          <a href="{{ site.baseUrl }}">{{ site.title }}</a>
+        </div>
+        {% if site.links %}
+        <div class="nav-action">
+          {% for link in site.links %}
+          <div class="nav-action-item">
+            <a href="{{ link.url }}">{{ link.name }}</a>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </nav>
+    </header>
+
+    <div id="content">
+      {% if site.sitemap.enable %}
+      <aside id="asidebar">
+        <nav class="main-menu">
+          <h3><a href="{{ site.baseUrl }}">{{ site.title }}</a></h3>
+          {% for item in sitemap.children %}
+          {% set depth = 0 %}
+          {% include "document-sitemap.html" %}
+          {% endfor %}
+        </nav>
+      </aside>
+      {% endif %}
+      <main>
+        <article>
+          <header>
+            <span id="toc" class="marginnote">
+              <h3>Table of contents</h3>
+              {{ page.toc | safe }}
+            </span>
+            <h1 class="page">{{ page.title }}</h1>
+            {% if page.descriptionContent %}
+            <p class="subtitle">{{ page.descriptionContent }}</p>
+            {% endif %}
+          </header>
+          <section>
+            {{ page.content | safe }}
+
+            {% if site.sitemap.depth is not null and page.depth >= site.sitemap.depth and page.children|length > 0 %}
+            <h2>On this page</h2>
+            <ul>
+              {% for child in page.children %}
+              <li><a href="{{ child.url }}">{{ child.title }}</a>: {{ child.description }}</li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </section>
+          <footer>
+            <p class="de-emphasize copyright">
+              <a href="https://that.world/legal.txt">Legal notice</a>.
+
+              Copyright 2019-2021
+              <a href="{% if page.email == 'wei@that.world' %}https://social.that.world/@wei{% else %}mailto:{{ page.email }}{% endif %}">{{ page.author }}</a>.
+
+              {% if page.license %}
+              This page is licensed under the terms of
+              <a href="{{ site.baseUrl }}license/{{ page.license }}.txt">{{ page.license }}</a>.
+              {% endif %}
+
+              {% if page.licenseCode %}
+              In addition, code blocks in this page are licensed under the terms of
+              <a href="{{ site.baseUrl }}license/{{ page.licenseCode }}.txt">{{ page.licenseCode }}</a>.
+              {% endif %}
+            </p>
+          </footer>
+        </article>
+      </main>
+    </div>
+
+    <script async src="{{ site.baseUrl }}js/vendor/highlight.js"></script>
+    <script async src="{{ site.baseUrl }}js/vendor/mathjax.js"></script>
+  </body>
+</html>
