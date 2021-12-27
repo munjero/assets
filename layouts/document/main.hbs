@@ -34,7 +34,7 @@
       <div class="header-bar"></div>
       <nav>
         <div class="nav-brand">
-          <a href="{{ siteBaseUrl }}">{{ siteTitle }}</a>
+          <a href="{{siteBaseUrl}}">{{siteTitle}}</a>
         </div>
         {{#if hasSiteLinks}}
           <div class="nav-action">
@@ -49,7 +49,14 @@
     </header>
 
     <div id="content">
-      <!-- TODO: add back sitemap -->
+      <aside id="asidebar">
+        <nav class="main-menu">
+          <h3><a href="{{siteBaseUrl}}">{{siteTitle}}</a></h3>
+          {{#each sitemap}}
+            {{> document/sitemap siteBaseUrl=../siteBaseUrl}}
+          {{/each}}
+        </nav>
+      </aside>
 
       <main>
         <article>
