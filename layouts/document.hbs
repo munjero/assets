@@ -63,35 +63,35 @@
 
             <h1 class="page">{{pageTitle}}</h1>
             {{#if pageDescriptionContent}}
-              <p class="subtitle">{{pageDescriptionContent}}</p>
+              <p class="subtitle">{{{pageDescriptionContent}}}</p>
             {{/if}}
           </header>
           <section>
-            {{pageContent}}
+            {{{pageContent}}}
 
             <!-- TODO: add back on this page section -->
           </section>
+
+          <footer>
+            <p class="de-emphasize copyright">
+              <a href="https://that.world/legal.txt">Legal notice</a>.
+
+              Copyright {{pageCopyrightYears}}
+              <a href="{{pageAuthorUrl}}">{{pageAuthor}}</a>.
+
+              {{#if pageLicense}}
+                This page is licensed under the terms of
+                <a href="{{siteBaseUrl}}license/{{pageLicense}}.txt">{{pageLicense}}</a>.
+              {{/if}}
+
+              {{#if pageLicenseCode}}
+                In addition, code blocks in this page are licensed under the terms of
+                <a href="{{siteBaseUrl}}license/{{pageLicenseCode}}.txt">{{pageLicenseCode}}</a>.
+              {{/if}}
+            </p>
+          </footer>
         </article>
       </main>
-
-      <footer>
-        <p class="de-emphasize copyright">
-          <a href="https://that.world/legal.txt">Legal notice</a>.
-
-          Copyright {{pageCopyrightYears}}
-          <a href="{{pageAuthorUrl}}">{{pageAuthor}}</a>.
-
-          {{#if pageLicense}}
-            This page is licensed under the terms of
-            <a href="{{siteBaseUrl}}license/{{pageLicense}}.txt">{{pageLicense}}</a>.
-          {{/if}}
-
-          {{#if pageLicenseCode}}
-            In addition, code blocks in this page are licensed under the terms of
-            <a href="{{siteBaseUrl}}license/{{pageLicenseCode}}.txt">{{pageLicenseCode}}</a>.
-          {{/if}}
-        </p>
-      </footer>
     </div>
 
     <script async src="{{siteBaseUrl}}js/vendor/highlight.js"></script>
