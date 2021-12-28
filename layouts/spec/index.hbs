@@ -21,9 +21,9 @@
   </head>
   <body>
     <ul>
-      {% for spec in specs %}
-      <li><a href="{{ spec.url }}">{{ spec.id }}</a>: {{ spec.description }} (<a href="{{ spec.discuss }}">Discuss</a>).</li>
-      {% endfor %}
+      {{#each specs}}
+      <li><a href="{{this.url}}">{{this.id}}</a>: {{this.description}} (<a href="{{this.discuss}}">Discuss</a>).</li>
+      {{/each}}
     </ul>
     <p><a href="https://that.world/legal.txt">Legal notice</a></p>
   </body>
