@@ -82,7 +82,7 @@
               <h2>On this page</h2>
               <ul>
                 {{#each localSitemap.children}}
-                  <li><a href="{{this.url}}">{{this.title}}</a></li>
+                  <li><a href="{{this.url}}">{{this.title}}</a>: {{this.description}}</li>
                 {{/each}}
               </ul>
             {{/if}}
