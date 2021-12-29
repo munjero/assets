@@ -49,6 +49,7 @@
     </header>
 
     <div id="content">
+      {{#if sitemap}}
       <aside id="asidebar">
         <nav class="main-menu">
           <h3><a href="{{siteBaseUrl}}">{{siteTitle}}</a></h3>
@@ -57,6 +58,7 @@
           {{/each}}
         </nav>
       </aside>
+      {{/if}}
 
       <main>
         <article>
@@ -76,7 +78,14 @@
           <section>
             {{{pageContent}}}
 
-            <!-- TODO: add back on this page section -->
+            {{#if localSitemap.children}}
+              <h2>On this page</h2>
+              <ul>
+                {{#each localSitemap.children}}
+                  <li><a href="{{this.url}}">{{this.title}}</a></li>
+                {{/each}}
+              </ul>
+            {{/if}}
           </section>
 
           <footer>
