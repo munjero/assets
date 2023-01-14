@@ -1,9 +1,9 @@
 <ul>
   <!-- TODO: is-current-page -->
   <li>
-    <a href="{{siteBaseUrl}}{{path}}">{{title}}</a>
+    <a href="{{url}}">{{title}}</a>
     {{#each children}}
-      {{> document/sitemap siteBaseUrl=../siteBaseUrl}}
+      {{> document/sitemap }}
     {{/each}}
   </li>
 </ul>
